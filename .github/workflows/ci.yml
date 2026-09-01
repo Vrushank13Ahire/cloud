@@ -12,6 +12,6 @@ jobs:
         - name: test secret
           env:
            secret: ${{ secrets.PASSWORD }}
-          run: echo "The secret exists!"
+          run: echo "The secret exists! ${#secret}"
 
 
