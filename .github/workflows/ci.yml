@@ -6,15 +6,12 @@ env:
   APP_NAME: my-app
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    env:
-      NODE_ENV: production
-
-    steps:
-      - name: Show them
-        env:
-          GREETING: hello
-        run: echo "$APP_NAME $NODE_ENV $GREETING"
+   test-secrets:
+      runs-on: ubuntu-latest
+      steps:
+        - name: test secret
+          env:
+           secret: ${{ secrets.PASSWORD }}
+          run: echo "The secret exists!"
 
 
