@@ -2,16 +2,19 @@ name: CI
 
 on: push
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: echo "Running Tests"
+env:
+  APP_NAME: my-app
 
-  depoly:
-    needs: test
+jobs:
+  build:
     runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
+
     steps:
-      - uses: actions/checkout@v4
-      - run: echo "Depolying only if test is Passed !!!"
+      - name: Show them
+        env:
+          GREETING: hello
+        run: echo "$APP_NAME $NODE_ENV $GREETING"
+
+
