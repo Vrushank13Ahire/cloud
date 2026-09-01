@@ -1,8 +1,22 @@
-name: First CI
-on: push
+name: Run Python File
+
+on:
+  push:
+    paths:
+      - "**.py"
+
 jobs:
-    greet:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v4
-        - run: echo "Hello from GitHub Actions"
+  run-python:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run Python file
+        run: python main.py
