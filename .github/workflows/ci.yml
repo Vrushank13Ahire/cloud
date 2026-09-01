@@ -1,9 +1,8 @@
-name: CI
+name: First CI
 on: push
 jobs:
-    build:
+    greet:
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v4
-        - run: echo "Built started for $GITHUB_SHA"
-        - run: ls -la
+        - run: echo "Hello from GitHub Actions"
