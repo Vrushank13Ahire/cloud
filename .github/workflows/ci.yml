@@ -2,16 +2,15 @@ name: CI
 
 on: push
 
-env:
-  APP_NAME: my-app
-
 jobs:
-   test-secrets:
-      runs-on: ubuntu-latest
-      steps:
-        - name: test secret
-          env:
-           secret: ${{ secrets.PASSWORD }}
-          run: echo "The secret exists! ${#secret}"
+  deploy:
+     runs-on: ubuntu-latest
+     steps:
+       - uses: actions/checkout@v4
+       - name: Deploy
+         env:
+           TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+         run: |
+           echo "Deploying with token length: ${#TOKEN}"
 
 
